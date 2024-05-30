@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import Filter from './component/Filter'
+import Photo from './component/Photo'
+import Button from './component/Button'
+import { useState } from 'react'
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [brightness,setBrightness] = useState(0);
+  const [contrast,setContrast] = useState(0);
+  const [Grayscale,setGrayscale] =useState(0);
+  const [saturate,setSaturate] = useState(0);
+  const [Rotate,setRotate] = useState(0);
+  const [opacity,setopacity] = useState(0);
+  function handleBrightness(e){
+   setBrightness(e.target.value);
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+     <div className='main_box'>
+      <h1>Photo Editor</h1>
+      <div className='box'>
+        <div>
+       <Filter 
+         brightness={brightness}
+         contrast={contrast} 
+         Grayscale={Grayscale}
+         saturate={saturate} 
+         Rotate={Rotate} 
+         opacity={opacity} 
+         handleBrightness={handleBrightness}
+         />
+        </div>
+        <div><Photo brightness={brightness}/></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='button_box'>
+        <Button name="reset"/>
+        <Button name="Download"/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     </div>
     </>
   )
 }
