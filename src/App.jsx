@@ -12,17 +12,15 @@ function App() {
   const [opacity,setopacity] = useState(20);
   const [File,setFile] = useState('');
   const [notSelect,setnotSelect] = useState(true);
-  const [disable,setDisable]=  useState("on");
+  const [disable,setDisable]=  useState(true);
   const ref = useRef('');
   const img = useRef('');
-  const check = useRef('');
   function chooseFile(e){
     if (e.target.files[0].type.startsWith('image/')) {
       const imageUrl = URL.createObjectURL(e.target.files[0]);
       setFile(imageUrl); 
       setnotSelect(false); 
-      setDisable("of");
-      check.current.style.display= "block";
+      setDisable(false);
     } else {
       alert('Please select an image file.');
       setnotSelect(true);
@@ -130,12 +128,11 @@ const downloadImage = (blob, fileName) => {
         </div>
       </div>
       <div className='button_box'>
-        <Button name="reset" Reset={Reset} disable={disable} check={check}/>
+        <Button name="reset" Reset={Reset} disable={disable}/>
         <input type="file" ref={ref} onChange={chooseFile} accept='image/*'  hidden/>
         <button style={{display:"block"}} onClick={()=>ref.current.click()}>choose</button>
         <Button name="Download" exportAsImage={exportAsImage} 
-        disable={disable} 
-        check={check}/>
+        disable={disable} />
       </div>
       
      </div>
