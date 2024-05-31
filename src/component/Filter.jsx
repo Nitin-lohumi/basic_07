@@ -1,6 +1,8 @@
 function Filter({
-    handleBrightness,brightness,contrast,Grayscale,
-    saturate,Rotate,opacity,
+    handleBrightness,handleContrast,handleGrayScale,
+    handleSaturate,hanndleOpacity,hanndleRotate
+    ,brightness,contrast,Grayscale,
+    saturate,Rotate,opacity,disable
 }){
 return(
     <>
@@ -15,33 +17,39 @@ return(
         </label>
         <label htmlFor="saturate">saturate
         </label>
-        <label htmlFor="Rotate">Rotate
+        <label htmlFor="Rotate">hue- Rotate
         </label>
         </div>
        <div className="main-filter">
        <input type="range" max={100} min={0}
        value={brightness} 
+       disabled={disable?disable:""}
        onChange={handleBrightness}
        id="brightness"/>
         <input type="range" max={100} min={0}
          value={contrast} 
-         onChange={(e)=>setContrast(e.target.value)} 
+         disabled={disable?disable:""}
+         onChange={handleContrast} 
         id="contrast"/>
         <input type="range" max={100} min={0}
          value={Grayscale} 
-         onChange={(e)=>setGrayscale(e.target.value)}
+         disabled={disable?disable:""}
+         onChange={handleGrayScale}
         id="Gray-scale"/>
         <input type="range" max={100} min={0} 
          value={opacity} 
-         onChange={(e)=>setopacity(e.target.value)}
+         disabled={disable?disable:""}
+         onChange={hanndleOpacity}
         id="opacity"/>
         <input type="range" max={100} min={0} 
          value={saturate} 
-         onChange={(e)=>setSaturate(e.target.value)}
+         disabled={disable?disable:""}
+         onChange={handleSaturate}
         id="saturate"/>
         <input type="range" max={100} min={0} 
          value={Rotate} 
-         onChange={(e)=>setRotate(e.target.value)}
+         disabled={disable?disable:""}
+         onChange={hanndleRotate}
         id="Rotate"/>
        </div>
        <div className="number">
